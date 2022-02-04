@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>tech.grasshopper</groupId>
 	<artifactId>rest-assured-report-junit4</artifactId>
-	<version>1.0</version>
+	<version>1.0.0</version>
 
 	<properties>
 		<aspectj.version>1.9.6</aspectj.version>
@@ -109,7 +109,7 @@
 			<plugin>
 				<groupId>tech.grasshopper</groupId>
 				<artifactId>rest-assured-extent-report-plugin</artifactId>
-				<version>1.3.0</version>
+				<version>1.4.0</version>
 				<executions>
 					<execution>
 						<id>report</id>
@@ -124,12 +124,17 @@
 					</allureResultsDirectory>
 					<reportDirectory>${extent.report.directory} </reportDirectory>
 					<reportDirectoryTimeStamp>dd MM yyyy HH mm ss </reportDirectoryTimeStamp>
-					<configFilePath>src/test/resources/spark-config.xml </configFilePath>
+					<sparkGenerate>true</sparkGenerate>
+					<pdfGenerate>true</pdfGenerate>
+					<sparkConfigFilePath>src/test/resources/spark-config.xml </sparkConfigFilePath>
+					<pdfConfigFilePath>src/test/resources/pdf-config.xml </pdfConfigFilePath>
 					<systemInfoFilePath>src/test/resources/systeminfo.properties
 					</systemInfoFilePath>
 					<sparkViewOrder>DASHBOARD,TEST,EXCEPTION,CATEGORY,AUTHOR,DEVICE
 					</sparkViewOrder>
-					<hidelogEvents>true</hidelogEvents>
+					<sparkHideLogEvents>
+						true
+					</sparkHideLogEvents>
 				</configuration>
 			</plugin>
 		</plugins>
