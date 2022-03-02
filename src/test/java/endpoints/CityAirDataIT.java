@@ -49,4 +49,15 @@ public class CityAirDataIT {
 		given().param("token", token).filter(new AllureRestAssured()).when().get("https://api.waqi.info/feed/narnia/")
 				.then().statusCode(equalTo(200));
 	}
+
+	@Test
+	public void getDualAirData() {
+		given().param("token", token).filter(new AllureRestAssured()).cookie("Cookie 1", "cookie one")
+				.cookie("Cookie 2", "cookie two").header("Header 1", "header 1").when()
+				.get("https://api.waqi.info/feed/london/").then().statusCode(equalTo(200));
+
+		given().param("token", token).filter(new AllureRestAssured()).cookie("Cookie 3", "cookie three")
+				.header("Header 1", "header 1").when().get("https://api.waqi.info/feed/rome/").then()
+				.statusCode(equalTo(200));
+	}
 }
