@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>tech.grasshopper</groupId>
 	<artifactId>rest-assured-report-junit4</artifactId>
-	<version>1.6.0</version>
+	<version>2.0.0</version>
 
 	<properties>
 		<allure.results.directory>
@@ -33,9 +33,9 @@
 			</exclusions>
 		</dependency>
 		<dependency>
-			<groupId>io.qameta.allure</groupId>
-			<artifactId>allure-rest-assured</artifactId>
-			<version>2.14.0</version>
+			<groupId>tech.grasshopper</groupId>
+			<artifactId>extent-allure-rest-assured</artifactId>
+			<version>1.0.0</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
@@ -98,7 +98,7 @@
 			<plugin>
 				<groupId>tech.grasshopper</groupId>
 				<artifactId>rest-assured-extent-report-plugin</artifactId>
-				<version>1.6.0</version>
+				<version>2.0.0</version>
 				<executions>
 					<execution>
 						<id>report</id>
@@ -111,19 +111,20 @@
 				<configuration>
 					<allureResultsDirectory>${allure.results.directory}
 					</allureResultsDirectory>
-					<reportDirectory>${extent.report.directory} </reportDirectory>
-					<reportDirectoryTimeStamp>dd MM yyyy HH mm ss </reportDirectoryTimeStamp>
+					<reportDirectory>${extent.report.directory}</reportDirectory>
+					<reportDirectoryTimeStamp>dd MM yyyy HH mm ss
+					</reportDirectoryTimeStamp>
 					<sparkGenerate>true</sparkGenerate>
 					<pdfGenerate>true</pdfGenerate>
-					<sparkConfigFilePath>src/test/resources/spark-config.xml </sparkConfigFilePath>
-					<pdfConfigFilePath>src/test/resources/pdf-config.xml </pdfConfigFilePath>
+					<sparkConfigFilePath>src/test/resources/spark-config.xml
+					</sparkConfigFilePath>
+					<pdfConfigFilePath>src/test/resources/pdf-config.xml
+					</pdfConfigFilePath>
 					<systemInfoFilePath>src/test/resources/systeminfo.properties
 					</systemInfoFilePath>
 					<sparkViewOrder>DASHBOARD,TEST,EXCEPTION,CATEGORY,AUTHOR,DEVICE
 					</sparkViewOrder>
-					<sparkHideLogEvents>
-						true
-					</sparkHideLogEvents>
+					<sparkHideLogEvents>true</sparkHideLogEvents>
 				</configuration>
 			</plugin>
 		</plugins>

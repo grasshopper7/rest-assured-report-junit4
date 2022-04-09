@@ -6,14 +6,15 @@ import static org.hamcrest.Matchers.equalTo;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import io.qameta.allure.restassured.AllureRestAssured;
 import tech.grasshopper.allure.Author;
 import tech.grasshopper.allure.Authors;
 import tech.grasshopper.allure.Categories;
 import tech.grasshopper.allure.Category;
 import tech.grasshopper.allure.Device;
 import tech.grasshopper.allure.Devices;
+import tech.grasshopper.filter.ExtentRestAssuredFilter;
 
+//@Ignore
 @Categories({ @Category("Cities") })
 @Authors({ @Author("John") })
 @Devices({ @Device("Computer") })
@@ -25,7 +26,7 @@ public class CityAirDataIT {
 	@Categories({ @Category("Europe") })
 	@Devices({ @Device("Mac"), @Device("Windows") })
 	public void getLondonAirData() {
-		given().param("token", token).filter(new AllureRestAssured()).cookie("Cookie 1", "cookie one")
+		given().param("token", token).filter(new ExtentRestAssuredFilter()).cookie("Cookie 1", "cookie one")
 				.cookie("Cookie 2", "cookie two").header("Header 1", "header 1").when()
 				.get("https://api.waqi.info/feed/london/").then().statusCode(equalTo(200));
 	}
@@ -35,7 +36,7 @@ public class CityAirDataIT {
 	@Authors({ @Author("Jane") })
 	@Devices({ @Device("Mac") })
 	public void getMunichAirData() {
-		given().param("token", token).filter(new AllureRestAssured()).cookie("Cookie 1", "cookie one")
+		given().param("token", token).filter(new ExtentRestAssuredFilter()).cookie("Cookie 1", "cookie one")
 				.cookie("Cookie 2", "cookie two").when().get("https://api.waqi.info/feed/munich/").then()
 				.statusCode(equalTo(201));
 	}
@@ -46,17 +47,17 @@ public class CityAirDataIT {
 	@Authors({ @Author("Lewis") })
 	@Devices({ @Device("Kindle") })
 	public void getNarniaAirData() {
-		given().param("token", token).filter(new AllureRestAssured()).when().get("https://api.waqi.info/feed/narnia/")
-				.then().statusCode(equalTo(200));
+		given().param("token", token).filter(new ExtentRestAssuredFilter()).when()
+				.get("https://api.waqi.info/feed/narnia/").then().statusCode(equalTo(200));
 	}
 
 	@Test
 	public void getDualAirData() {
-		given().param("token", token).filter(new AllureRestAssured()).cookie("Cookie 1", "cookie one")
+		given().param("token", token).filter(new ExtentRestAssuredFilter()).cookie("Cookie 1", "cookie one")
 				.cookie("Cookie 2", "cookie two").header("Header 1", "header 1").when()
 				.get("https://api.waqi.info/feed/london/").then().statusCode(equalTo(200));
 
-		given().param("token", token).filter(new AllureRestAssured()).cookie("Cookie 3", "cookie three")
+		given().param("token", token).filter(new ExtentRestAssuredFilter()).cookie("Cookie 3", "cookie three")
 				.header("Header 1", "header 1").when().get("https://api.waqi.info/feed/rome/").then()
 				.statusCode(equalTo(200));
 	}
